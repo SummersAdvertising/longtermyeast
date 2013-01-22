@@ -1,7 +1,7 @@
-set :application, 	"yks"
+set :application, 	"longtermyeast"
 set :domain, 		"li406-49.members.linode.com"
-set :repository, 	"git@github.com:SummersAdvertising/yks.git"
-set :deploy_to,		"/var/spool/RoR-Projects/yks"
+set :repository, 	"git@github.com:SummersAdvertising/longtermyeast.git"
+set :deploy_to,		"/var/spool/RoR-Projects/longtermyeast"
 
 role :app,		domain
 role :web,	domain
@@ -20,23 +20,23 @@ set :group, "webs"
 
 default_environment["PATH"] = "/opt/ree/bin:/usr/local/bin:/usr/bin:/bin:/usr/games"
 
+desc "precompile the assets"
+task :precompile_assets, :roles => :web, :except => { :no_release => true } do
+	run "cd #{current_path}; rm -rf public/assets/*"
+	run "cd #{current_path}; RAILS_ENV=production bundle exec rake assets:precompile"
+end
+
 namespace :deploy do
 	desc "restart"
-	task :restart do
-		run "touch #{current_path}/tmp/restart.txt"
-		run "ln -s  #{shared_path}/production/uploads/banners #{current_path}/public/banners"
-		run "ln -s #{shared_path}/production/uploads/news #{current_path}/public/news"
-		run "ln -s #{shared_path}/production/uploads/user_exps #{current_path}/public/user_exps"
-		run "ln -s #{shared_path}/production/uploads #{current_path}/public/uploads"
-		
+	task :restart do		
 		run "cd #{current_path}; RAILS_ENV=production bundle exec rake cache:clear"
 	end
 end
 
 desc "Create database.yml and asset packages for production"
 after("deploy:update_code") do
-	db_config = "#{shared_path}/config/database.yml.production"
+	#db_config = "#{shared_path}/config/database.yml.production"
 	#db_config = "#{db_config} #{release_path}/config/database.yml.production"
-	run "cp #{db_config} #{release_path}/config/database.yml"	
+	#run "cp #{db_config} #{release_path}/config/database.yml"	
 end
 
