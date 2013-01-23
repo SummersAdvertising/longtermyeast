@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>榮騰農產預備畫面</title>
+    <head>
+    <title>榮騰農產</title>
     <style type="text/css" media="screen">
-      body {
-        margin: 0;
-        width: 100%;
-        padding: 0;
-        background-color: #000;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-        font-size: 13px;
-        color: #333;
-      }
-    </style>
+html {
+	background: #000
+}
+body {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0;
+	font: 300 13px "微軟正黑體", arial;
+	background: url(index_img.jpg) center 0 no-repeat #000;
+	background-size: contain;
+	height: 670px;
+	position: relative
+}
+#link {
+	position: absolute;
+	bottom: 150px;
+	right: 35px;
+	overflow: hidden
+}
+#link a {
+	display: block;
+	background: #C0A355;
+	color: #111;
+	text-shadow: 0 1px 0 #DDC584;
+	padding: 15px;
+	float: left;
+	margin: 0 0 0 10px;
+	text-decoration: none;
+	border-radius: 10px;
+	font: 700 14px "微軟正黑體", arial
+}
+#link a:hover {
+	background: #EAC45F
+}
+</style>
     <script type="text/javascript">
       function about() {
         info = document.getElementById('about-content');
@@ -26,9 +51,8 @@
         info.style.display = 'block'
       }
     </script>
-  </head>
-  <body>
-  	<div style="max-width: 1024px; margin: 0 auto; border: 0;" >	  	
-    	<img style="width: 100%; margin: 0 auto; border: 0;" src="index_img.jpg" />  	</div>
-  </body>
+    </head>
+    <body>
+    <div id="link"> <a href="form.pdf" target="_blank">富貴吉祥禮盒訂購單</a> <a href="dm.pdf" target="_blank">掛川酵母豚型錄簡介</a> </div>
+</body>
 </html>
